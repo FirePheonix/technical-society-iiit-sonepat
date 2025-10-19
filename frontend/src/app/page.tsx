@@ -81,7 +81,7 @@ export default function Home() {
         >
           When does real learning begin? Not in classrooms. It begins when ideas collide, code breaks, and minds rebuild stronger.
 Welcome to The Technical Society — where the brightest engineers, designers, and innovators craft the future, one experiment at a time.
-Here, curiosity isn't a hobby — it's a lifestyle. Build. Break. Create. Repeat.
+Here, curiosity isn&apos;t a hobby — it&apos;s a lifestyle. Build. Break. Create. Repeat.
         </ScrollReveal>
 
         {/* Logo Carousel */}

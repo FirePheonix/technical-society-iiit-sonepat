@@ -606,9 +606,3 @@ export const ANIMATION_CONFIG = {
   enablePointerInteraction: true,
   lineHoverPrecision: 2,
 };
-
-export const INITIAL_CAMERA_POSITION = {
-  lat: 20,
-  lng: 20,
-  altitude: 23,
-};

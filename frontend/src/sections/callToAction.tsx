@@ -23,7 +23,7 @@ export const CallToAction = () => {
   };
   
   // Reset position when mouse leaves
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMouseLeave = () => {
     setMousePosition({ x: 50, y: 50 }); // Center position
   };
   
@@ -36,7 +36,7 @@ export const CallToAction = () => {
         { duration: 0.8, ease: "easeOut" }
       );
     }
-  }, [isInView, animate]);
+  }, [isInView, animate, contentScope]);
   
   // Default position for light effect
   useEffect(() => {

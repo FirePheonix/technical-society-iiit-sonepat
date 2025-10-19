@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 const TypingWords = () => {
-  const words = ["feel.", "convert.", "resonate."];
+  const words = useMemo(() => ["feel.", "convert.", "resonate."], []);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -36,7 +36,7 @@ const TypingWords = () => {
     }, isDeleting ? 50 : 100); // faster delete
 
     return () => clearTimeout(timer);
-  }, [currentText, isDeleting, isWaiting, currentWordIndex]);
+  }, [currentText, isDeleting, isWaiting, currentWordIndex, words]);
 
   return (
     <span className="relative">

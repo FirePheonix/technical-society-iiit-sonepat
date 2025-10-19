@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import svgList from "../constants/icons";
 
 const SVGS_PER_ROW = 5;
@@ -18,9 +19,11 @@ const TechIcon = React.memo(function TechIcon({ svg, index }: TechIconProps) {
       whileTap={{ scale: 0.8, rotate: -10, transition: { duration: 0.2 } }}
       style={{ willChange: "transform" }}
     >
-      <img
+      <Image
         src={svg}
         alt={`Tech Icon ${index + 1}`}
+        width={64}
+        height={64}
         className="w-full h-full object-contain drop-shadow-md"
         style={{ willChange: "transform" }}
       />

@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import {
   CITIES_DATA,
   ARCS_DATA,
   RINGS_DATA,
   GLOBE_CONFIG,
   ANIMATION_CONFIG,
-  INITIAL_CAMERA_POSITION,
 } from "../constants/EarthData";
 import Button from "../components/Button";
 import AnimatedCoding from "../components/AnimatedCoding";
@@ -31,9 +31,11 @@ const About = () => {
         {/* --- Section 1 --- */}
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
-            <img
+            <Image
               src="/assets/grid1.gif"
               alt="grid-1"
+              width={500}
+              height={276}
               className="w-full sm:h-[276px] h-fit object-contain"
             />
 
@@ -80,13 +82,13 @@ const About = () => {
                 pointsData={CITIES_DATA}
                 pointColor={() => "#ffffff"}
                 pointAltitude={0.02}
-                pointRadius={(d: any) => d.size * 0.3 + 0.2}
+                pointRadius={(d: unknown) => (d as { size: number }).size * 0.3 + 0.2}
                 pointsMerge={ANIMATION_CONFIG.pointsMerge}
                 pointsTransitionDuration={
                   ANIMATION_CONFIG.pointsTransitionDuration
                 }
                 arcsData={ARCS_DATA}
-                arcColor={(d: any) => d.color}
+                arcColor={(d: unknown) => (d as { color: string }).color}
                 arcDashLength={() => Math.random() * 0.4 + 0.3}
                 arcDashGap={() => Math.random() * 0.3 + 0.1}
                 arcDashAnimateTime={() => 2000 + Math.random() * 3000}
@@ -108,7 +110,6 @@ const About = () => {
                   ANIMATION_CONFIG.enablePointerInteraction
                 }
                 lineHoverPrecision={ANIMATION_CONFIG.lineHoverPrecision}
-                pointOfView={INITIAL_CAMERA_POSITION}
               />
             </div>
             <div>
@@ -141,9 +142,11 @@ const About = () => {
         {/* --- Section 4 --- */}
         <div className="xl:col-span-2 xl:row-span-3">
           <div className="grid-container">
-            <img
+            <Image
               src="/assets/grid3.png"
               alt="grid-3"
+              width={500}
+              height={266}
               className="w-full sm:h-[266px] h-fit object-contain"
             />
 

@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import Image from "next/image";
 
 const AnimatedTyping = () => {
-  const words = ["engineers.", "coders","developers.", "marketing.", "designers.","photographers." ];
+  const words = useMemo(() => ["engineers.", "coders","developers.", "marketing.", "designers.","photographers." ], []);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -123,9 +124,11 @@ const HeroSection = () => {
         className="relative mx-auto max-w-5xl mt-20"
       >
         <div className="glass rounded-xl overflow-hidden">
-          <img
+          <Image
             src="/images/c32c6788-5e4a-4fee-afee-604b03113c7f.png"
             alt="Technical Society Dashboard"
+            width={1200}
+            height={600}
             className="w-full h-auto"
           />
         </div>
