@@ -2,7 +2,7 @@ name: Node.js CI Checks
 
 on:
   pull_request:
-    branches: [ main ] # Or your default branch
+    branches: [ main ] # Or your default branch name
 
 jobs:
   build_and_lint:
@@ -10,8 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        # Use a recent LTS version compatible with Next.js
-        node-version: [18.x] # <--- Recommended: Use 18.x or 20.x
+        node-version: [18.x] # Or 20.x
 
     steps:
       - name: Checkout repository
@@ -22,14 +21,20 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+          # Specify cache path relative to the root
+          cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
+        # Tell this step to run inside the 'frontend' directory
+        working-directory: ./frontend
         run: npm ci
 
       - name: Run build command
-        # Use the correct build command for Next.js
-        run: npm run build # Your package.json uses 'next build --turbopack'
+        # Tell this step to run inside the 'frontend' directory
+        working-directory: ./frontend
+        run: npm run build
 
       - name: Run lint command
-        # Use the correct lint command for Next.js
-        run: npm run lint # Your package.json uses 'eslint src/**/*.{js,jsx}'
+        # Tell this step to run inside the 'frontend' directory
+        working-directory: ./frontend
+        run: npm run lint
