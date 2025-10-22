@@ -83,7 +83,7 @@ export default function Home() {
                                   
                                   
                                   
-                                  <div className="bg-black">
+                                           <div className="bg-black">
 
 
 
@@ -93,7 +93,7 @@ export default function Home() {
 
 
 
-                                    
+
           <About />
         </div>
 
