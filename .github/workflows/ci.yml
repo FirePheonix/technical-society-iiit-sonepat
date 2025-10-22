@@ -10,8 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        # Use a recent LTS version compatible with Next.js
-        node-version: [18.x] # <--- Recommended: Use 18.x or 20.x
+        node-version: [18.x] 
 
     steps:
       - name: Checkout repository
@@ -22,22 +21,25 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          # Point cache to the lock file inside the frontend directory
           cache-dependency-path: frontend/package-lock.json
 
-      - name: Install dependencies
-        # Add working-directory to run commands inside ./frontend
+      # --- Start Debug Step ---
+      - name: List files in root directory # See what's initially checked out
+        run: ls -la
+
+      - name: List files in frontend directory # See content before npm ci
         working-directory: ./frontend
-        run: npm ci
+        run: ls -la
+      # --- End Debug Step ---
+
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm ci # This command requires package-lock.json in this directory
 
       - name: Run build command
-        # Add working-directory here too
         working-directory: ./frontend
-        # Use the correct build command for Next.js
-        run: npm run build # Your package.json uses 'next build --turbopack'
+        run: npm run build 
 
       - name: Run lint command
-        # And here as well
         working-directory: ./frontend
-        # Use the correct lint command for Next.js
-        run: npm run lint # Your package.json uses 'eslint src/**/*.{js,jsx}'
+        run: npm run lint
