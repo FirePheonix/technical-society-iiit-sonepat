@@ -26,7 +26,7 @@
   --color-input: hsl(0 0% 12%);
   --color-ring: hsl(142 84% 58%);
   --radius: 0.75rem;
-  
+
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-dancing-script: 'Dancing Script', cursive;
 }
@@ -36,6 +36,14 @@
     border-color: hsl(0 0% 12%);
     scroll-behavior: smooth;
   }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
   body {
     background-color: hsl(0 0% 4%);
     color: hsl(0 0% 100%);
@@ -43,6 +51,15 @@
     font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  main,
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100vw;
+    max-width: none;
   }
 }
 
@@ -61,7 +78,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(225deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+    background: linear-gradient(225deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
@@ -72,7 +89,7 @@
   .glass-hover {
     transition: all 0.3s;
   }
-  
+
   .glass-hover:hover {
     background-color: rgb(255 255 255 / 0.1);
   }
@@ -88,7 +105,7 @@
     transition: opacity 0.3s;
     border-radius: 9999px;
   }
-  
+
   .button-gradient:hover {
     opacity: 0.9;
   }
@@ -98,12 +115,14 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-100%);
   }
 }
 
 @keyframes ping {
+
   75%,
   100% {
     transform: scale(2);
@@ -115,38 +134,132 @@
   animation: marquee 30s linear infinite;
 }
 
-  .font-dancing-script {
-    font-family: 'Dancing Script', cursive;
-  }
+.font-dancing-script {
+  font-family: 'Dancing Script', cursive;
+}
 
-  /* About Section Utilities */
-  .c-space {
-    @apply px-5 sm:px-10;
-  }
+.c-space {
+  @apply px-0;
+}
 
-  .grid-container {
-    @apply w-full h-full border border-[#1C1C21] bg-[#0E0E10] rounded-lg p-4 sm:p-7 flex flex-col gap-5;
-  }
+.grid-container {
+  @apply w-full h-full border border-[#1C1C21] bg-[#0E0E10] rounded-lg p-4 sm:p-7 flex flex-col gap-5;
+}
 
-  .grid-headtext {
-    @apply text-xl font-semibold mb-2 text-white;
-    font-family: "General Sans", sans-serif;
-  }
+.grid-headtext {
+  @apply text-xl font-semibold mb-2 text-white;
+  font-family: "General Sans", sans-serif;
+}
 
-  .grid-subtext {
-    @apply text-[#AFB0B6] text-base;
-    font-family: "General Sans", sans-serif;
-  }
+.grid-subtext {
+  @apply text-[#AFB0B6] text-base;
+  font-family: "General Sans", sans-serif;
+}
 
-  .btn {
-    @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md bg-[#1C1C21] transition-all duration-200 text-white mx-auto active:scale-95;
-  }
+.btn {
+  @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md bg-[#1C1C21] transition-all duration-200 text-white mx-auto active:scale-95;
+}
 
-  .btn-ping {
-    @apply absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75;
-    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
+.btn-ping {
+  @apply absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75;
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
 
-  .btn-ping_dot {
-    @apply relative inline-flex rounded-full h-3 w-3 bg-green-500;
-  }
+.btn-ping_dot {
+  @apply relative inline-flex rounded-full h-3 w-3 bg-green-500;
+}
+
+
+
+
+.react-flow__controls button {
+  background-color: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  color: #374151 !important;
+}
+
+.react-flow__controls button:hover {
+  background-color: #f9fafb !important;
+}
+
+.react-flow__controls button svg {
+  fill: #374151 !important;
+}
+
+.react-flow {
+  background-color: #ffffff !important;
+}
+
+.react-flow__pane {
+  background-color: #ffffff !important;
+}
+
+.react-flow__viewport {
+  background-color: #ffffff !important;
+}
+
+.roadmaps-page {
+  background-color: #ffffff !important;
+}
+
+.react-flow__node {
+  background-color: transparent !important;
+}
+
+.react-flow__node-default {
+  background-color: transparent !important;
+}
+
+.scroll-reveal-container {
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.scroll-reveal-container h2 {
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.scroll-reveal-container p {
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
+}
+
+.scroll-reveal-text {
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
+}
+
+.c-space {
+  @apply px-5 sm:px-10;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+}
