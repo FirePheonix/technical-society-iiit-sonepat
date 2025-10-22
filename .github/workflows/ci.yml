@@ -22,15 +22,22 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+          # Point cache to the lock file inside the frontend directory
           cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
+        # Add working-directory to run commands inside ./frontend
+        working-directory: ./frontend
         run: npm ci
 
       - name: Run build command
+        # Add working-directory here too
+        working-directory: ./frontend
         # Use the correct build command for Next.js
         run: npm run build # Your package.json uses 'next build --turbopack'
 
       - name: Run lint command
+        # And here as well
+        working-directory: ./frontend
         # Use the correct lint command for Next.js
         run: npm run lint # Your package.json uses 'eslint src/**/*.{js,jsx}'
