@@ -73,8 +73,7 @@ jobs:
       pull-requests: write 
 
     steps:
-      - name: Get PR Number
-        run: echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+      # The 'Get PR Number' step is removed, as we can access the number directly.
         
       - name: Generate comment content
         id: generate-content # Give this step an ID to reference its outputs
@@ -120,7 +119,7 @@ jobs:
               echo "**How to fix:**" >> $COMMENT_FILE
               echo "1. Run \`npm run build\` locally to identify the issue" >> $COMMENT_FILE
               echo "2. Fix any TypeScript compilation errors" >> $COMMENT_FILE
-              echo "3. Ensure all dependencies are properly installed" >> $COMMENT_EILE
+              echo "3. Ensure all dependencies are properly installed" >> $COMMENT_FILE
               echo "4. Test your changes before pushing" >> $COMMENT_FILE
               echo "" >> $COMMENT_FILE
             fi
@@ -149,8 +148,8 @@ jobs:
       - name: Post or Update PR Comment
         uses: peter-evans/create-or-update-comment@v4
         with:
-          # Use the PR number from the first step
-          issue-number: ${{ env.PR_NUMBER }}
+          # Use the PR number directly from the GitHub event context
+          issue-number: ${{ github.event.pull_request.number }}
           # Use the 'comment-body' output from the 'generate-content' step
           body: ${{ steps.generate-content.outputs.comment-body }}
           # This makes the action find and edit its *own* last comment
