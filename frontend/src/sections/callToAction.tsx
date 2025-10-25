@@ -1,5 +1,5 @@
 import { Button } from "../components/ui/button";
-// Using public path for images in Next.js
+
 const starsBg = "/assets/stars.png";
 const gridLines = "/assets/grid-lines.png";
 import { useEffect, useRef, useState } from "react";
@@ -11,7 +11,7 @@ export const CallToAction = () => {
   const isInView = useInView(containerRef, { once: true, amount: 0.3 });
   const [contentScope, animate] = useAnimate();
   
-  // Handle mouse move to update the light position
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!containerRef.current) return;
     
@@ -22,12 +22,12 @@ export const CallToAction = () => {
     setMousePosition({ x, y });
   };
   
-  // Reset position when mouse leaves
+
   const handleMouseLeave = () => {
-    setMousePosition({ x: 50, y: 50 }); // Center position
+    setMousePosition({ x: 50, y: 50 });
   };
   
-  // Apply entrance animation when component comes into view
+
   useEffect(() => {
     if (isInView) {
       animate(
@@ -38,7 +38,7 @@ export const CallToAction = () => {
     }
   }, [isInView, animate, contentScope]);
   
-  // Default position for light effect
+
   useEffect(() => {
     setMousePosition({ x: 50, y: 50 });
   }, []);
@@ -57,7 +57,7 @@ export const CallToAction = () => {
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
-          {/* Grid overlay with radial gradient mask - Now following mouse position */}
+
           <div 
             className="absolute inset-0 bg-[rgb(28,86,26)] bg-blend-overlay transition-[mask-position] duration-200 ease-out"
             style={{
@@ -66,7 +66,7 @@ export const CallToAction = () => {
             }}
           ></div>
           
-          {/* Content with entrance animation */}
+
           <motion.div 
             ref={contentScope}
             initial={{ opacity: 0, y: 40 }}

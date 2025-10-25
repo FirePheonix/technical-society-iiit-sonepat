@@ -59,11 +59,11 @@ const HeroSection = () => {
       transition={{ duration: 0.5 }}
       className="relative container px-4 pt-40 pb-20"
     >
-      {/* Background */}
+
       <div className="absolute inset-0 -z-10 bg-[#0A0A0A]" />
 
       <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        {/* Left Column - Text Content */}
+
         <div className="max-w-2xl">
           <h1 className="text-5xl md:text-7xl font-normal mb-4 tracking-tight text-left">
             <span className="text-gray-200">
@@ -98,7 +98,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Right Column - 3D Model */}
+
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -116,7 +116,7 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Dashboard Image */}
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

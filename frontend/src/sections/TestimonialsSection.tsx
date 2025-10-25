@@ -70,7 +70,7 @@ const TestimonialsSection = () => {
 
         <div className="relative flex flex-col antialiased">
           <div className="relative flex overflow-hidden py-4">
-            {/* First marquee row */}
+
             <div className="animate-marquee flex min-w-full shrink-0 items-stretch gap-8">
               {testimonials.map((testimonial, index) => (
                 <Card
@@ -98,7 +98,7 @@ const TestimonialsSection = () => {
               ))}
             </div>
 
-            {/* Second marquee row (duplicate for seamless loop) */}
+
             <div className="animate-marquee flex min-w-full shrink-0 items-stretch gap-8">
               {testimonials.map((testimonial, index) => (
                 <Card

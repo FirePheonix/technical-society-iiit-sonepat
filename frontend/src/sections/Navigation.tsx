@@ -30,7 +30,7 @@ const Navigation = () => {
     if (sectionId === 'testimonials') {
       const testimonialSection = document.querySelector('.animate-marquee');
       if (testimonialSection) {
-        const yOffset = -100; // Offset to account for the fixed header
+        const yOffset = -100;
         const y = testimonialSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
@@ -127,7 +127,7 @@ const Navigation = () => {
             <span className="font-bold text-base">Technical Society</span>
           </div>
 
-          {/* Desktop Navigation */}
+
           <div className="hidden md:flex items-center gap-6">
             <NavigationMenu>
               <NavigationMenuList>
@@ -203,7 +203,7 @@ const Navigation = () => {
             </Button>
           </div>
 
-          {/* Mobile Navigation */}
+
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>

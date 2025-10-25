@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="glass glass-hover rounded-xl p-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             
-            {/* About Section */}
+
             <div className="space-y-4">
               <h3 className="font-medium text-lg">Technical Society — IIIT Sonepat</h3>
               <p className="text-sm text-muted-foreground">
@@ -26,7 +26,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Clubs Section */}
+
             <div className="space-y-4">
               <h4 className="font-medium">Our Clubs</h4>
               <ul className="space-y-2">
@@ -57,7 +57,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Resources Section */}
+
             <div className="space-y-4">
               <h4 className="font-medium">Resources</h4>
               <ul className="space-y-2">
@@ -88,7 +88,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Contact Section */}
+
             <div className="space-y-4">
               <h4 className="font-medium">Get Involved</h4>
               <ul className="space-y-2">
