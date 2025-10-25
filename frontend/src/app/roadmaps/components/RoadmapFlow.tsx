@@ -8,6 +8,8 @@ import {
     Connection,
     Node,
     Edge,
+    NodeChange,
+    EdgeChange,
     useReactFlow,
     ReactFlowProvider,
 } from '@xyflow/react';
@@ -16,8 +18,8 @@ import { CustomNode } from './CustomNode';
 interface RoadmapFlowProps {
     nodes: Node[];
     edges: Edge[];
-    onNodesChange: (changes: any) => void;
-    onEdgesChange: (changes: any) => void;
+    onNodesChange: (changes: NodeChange[]) => void;
+    onEdgesChange: (changes: EdgeChange[]) => void;
     onEdgesSet: (callback: (edges: Edge[]) => Edge[]) => void;
     onResetView?: () => void;
 }

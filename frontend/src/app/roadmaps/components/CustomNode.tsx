@@ -11,12 +11,8 @@ export function CustomNode({ data, selected }: CustomNodeProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [particles, setParticles] = useState<Array<{id: number, x: number, y: number}>>([]);
 
-  if (!data) {
-    return null;
-  }
-
-  const backgroundColor = data.color || '#3b82f6';
-  const borderColor = data.borderColor || '#2563eb';
+  const backgroundColor = data?.color || '#3b82f6';
+  const borderColor = data?.borderColor || '#2563eb';
 
   const getSkillLevel = () => {
     if (backgroundColor === '#22c55e') return 'Beginner';
@@ -47,6 +43,10 @@ export function CustomNode({ data, selected }: CustomNodeProps) {
       setParticles([]);
     }
   }, [isHovered]);
+
+  if (!data) {
+    return null;
+  }
 
 
 
