@@ -43,7 +43,7 @@ function RoadmapFlowInner({
 
     useEffect(() => {
         const handleResetView = () => {
-            fitView({ padding: 0.2, duration: 800 });
+            fitView({ padding: 0.1, duration: 800 });
         };
 
         if (onResetView) {
@@ -51,14 +51,6 @@ function RoadmapFlowInner({
             return () => window.removeEventListener('reset-view', handleResetView);
         }
     }, [fitView, onResetView]);
-
-    useEffect(() => {
-        if (nodes.length > 0) {
-            setTimeout(() => {
-                fitView({ padding: 0.2, duration: 500 });
-            }, 100);
-        }
-    }, [nodes, fitView]);
 
     return (
         <div className="h-full flex-1" style={{ 

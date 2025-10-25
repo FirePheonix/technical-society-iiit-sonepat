@@ -27,14 +27,14 @@ const createEdge = (id: string, source: string, target: string) => ({
 export const initialRoadmapData: RoadmapCollection = {
   ai: {
     nodes: [
-      createNode('1', 'Python Basics', 400, 100, COLORS.GREEN),
-      createNode('2', 'Mathematics & Statistics', 400, 200, COLORS.ORANGE),
-      createNode('3', 'NumPy & Pandas', 200, 300, COLORS.BLUE),
-      createNode('4', 'Data Visualization', 600, 300, COLORS.BLUE),
-      createNode('5', 'Machine Learning', 400, 400, COLORS.PURPLE),
-      createNode('6', 'Deep Learning', 200, 500, COLORS.PINK),
-      createNode('7', 'Neural Networks', 600, 500, COLORS.PINK),
-      createNode('8', 'AI Projects', 400, 600, COLORS.INDIGO),
+      createNode('1', 'Python Basics', 250, 50, COLORS.GREEN),
+      createNode('2', 'Mathematics & Statistics', 250, 150, COLORS.ORANGE),
+      createNode('3', 'NumPy & Pandas', 100, 250, COLORS.BLUE),
+      createNode('4', 'Data Visualization', 400, 250, COLORS.BLUE),
+      createNode('5', 'Machine Learning', 250, 350, COLORS.PURPLE),
+      createNode('6', 'Deep Learning', 100, 450, COLORS.PINK),
+      createNode('7', 'Neural Networks', 400, 450, COLORS.PINK),
+      createNode('8', 'AI Projects', 250, 550, COLORS.INDIGO),
     ],
     edges: [
       createEdge('e1-2', '1', '2'),
@@ -50,14 +50,14 @@ export const initialRoadmapData: RoadmapCollection = {
   },
   dsa: {
     nodes: [
-      createNode('1', 'Programming Basics', 400, 100, COLORS.GREEN),
-      createNode('2', 'Arrays & Strings', 400, 200, COLORS.ORANGE),
-      createNode('3', 'Linked Lists', 200, 300, COLORS.BLUE),
-      createNode('4', 'Stacks & Queues', 600, 300, COLORS.BLUE),
-      createNode('5', 'Trees & Graphs', 400, 400, COLORS.PURPLE),
-      createNode('6', 'Sorting Algorithms', 200, 500, COLORS.PINK),
-      createNode('7', 'Dynamic Programming', 600, 500, COLORS.PINK),
-      createNode('8', 'Advanced Algorithms', 400, 600, COLORS.INDIGO),
+      createNode('1', 'Programming Basics', 250, 50, COLORS.GREEN),
+      createNode('2', 'Arrays & Strings', 250, 150, COLORS.ORANGE),
+      createNode('3', 'Linked Lists', 100, 250, COLORS.BLUE),
+      createNode('4', 'Stacks & Queues', 400, 250, COLORS.BLUE),
+      createNode('5', 'Trees & Graphs', 250, 350, COLORS.PURPLE),
+      createNode('6', 'Sorting Algorithms', 100, 450, COLORS.PINK),
+      createNode('7', 'Dynamic Programming', 400, 450, COLORS.PINK),
+      createNode('8', 'Advanced Algorithms', 250, 550, COLORS.INDIGO),
     ],
     edges: [
       createEdge('e1-2', '1', '2'),
@@ -73,14 +73,14 @@ export const initialRoadmapData: RoadmapCollection = {
   },
   webdev: {
     nodes: [
-      createNode('1', 'HTML & CSS', 400, 100, COLORS.GREEN),
-      createNode('2', 'JavaScript', 400, 200, COLORS.ORANGE),
-      createNode('3', 'React.js', 200, 300, COLORS.BLUE),
-      createNode('4', 'TypeScript', 600, 300, COLORS.BLUE),
-      createNode('5', 'Next.js', 400, 400, COLORS.PURPLE),
-      createNode('6', 'State Management', 200, 500, COLORS.PINK),
-      createNode('7', 'Testing', 600, 500, COLORS.PINK),
-      createNode('8', 'Deployment', 400, 600, COLORS.INDIGO),
+      createNode('1', 'HTML & CSS', 250, 50, COLORS.GREEN),
+      createNode('2', 'JavaScript', 250, 150, COLORS.ORANGE),
+      createNode('3', 'React.js', 100, 250, COLORS.BLUE),
+      createNode('4', 'TypeScript', 400, 250, COLORS.BLUE),
+      createNode('5', 'Next.js', 250, 350, COLORS.PURPLE),
+      createNode('6', 'State Management', 100, 450, COLORS.PINK),
+      createNode('7', 'Testing', 400, 450, COLORS.PINK),
+      createNode('8', 'Deployment', 250, 550, COLORS.INDIGO),
     ],
     edges: [
       createEdge('e1-2', '1', '2'),
