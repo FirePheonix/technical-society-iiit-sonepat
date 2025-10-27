@@ -62,17 +62,58 @@ jobs:
         id: generate-content
         env:
           CI_STATUS: ${{ needs.build.outputs.status }}
-          LINT_STATUS: ${{ needs.lint.outputs.status }}
-        run: |
-          COMMENT_FILE=$(mktemp)
-          if [ "$CI_STATUS" == "success" ] && [ "$LINT_STATUS" == "success" ]; then
-            echo "## ✅ All Checks Passed!" >> $COMMENT_FILE
-            echo "" >> $COMMENT_FILE
-            echo "**.Status:** ✅ Ready to merge" >> $COMMENT_FILE
-          else
-            echo "## ❌ Checks Failed" >> $COMMENT_FILE
-            echo "**.Status:** 🔴 Not ready to merge" >> $COMMENT_FILE
-          fi
+          LINT_STATUS: ${{ needs.lint.outputs.status }} 
+          run: | 
+            COMMENT_FILE=$(mktemp) 
+  
+            if [ "$CI_STATUS" == "success" ] && [ "$LINT_STATUS" == "success" ]; then 
+              echo "## ✅ All Checks Passed!" >> $COMMENT_FILE 
+              echo "" >> $COMMENT_FILE 
+              echo "**.Status:** ✅ Ready to merge" >> $COMMENT_FILE 
+             echo "" >> $COMMENT_FILE 
+             echo "### 🏁 Completed Workflows" >> $COMMENT_FILE 
+             echo "" >> $COMMENT_FILE 
+             echo "| Workflow | Status | Details |" >> $COMMENT_FILE 
+             echo "|:---|:---|:---|" >> $COMMENT_FILE 
+             echo "| **Continuous Integration** | ✅ Passed | Build completed successfully |" >> $COMMENT_FILE 
+             echo "| **Code Linting** | ✅ Passed | All formatting and style checks passed |" >> $COMMENT_FILE 
+             echo "" >> $COMMENT_FILE 
+             echo "**This PR is ready for review and can be safely merged to \`main\` branch!**" >> $COMMENT_FILE 
+             echo "" >> $COMMENT_FILE 
+             echo "Great work! Your code meets all quality standards. 🎉" >> $COMMENT_FILE 
+            else 
+              echo "## ❌ Checks Failed" >> $COMMENT_FILE 
+             echo "" >> $COMMENT_FILE 
+              echo "**.Status:** 🔴 Not ready to merge" >> $COMMENT_FILE 
+             echo "" >> $COMMENT_FILE 
+             echo "Please fix the following issues before merging:" >> $COMMENT_FILE 
+             echo "" >> $COMMENT_FILE 
+  
+             if [ "$CI_STATUS" == "failure" ]; then 
+               echo "### 🔴 Continuous Integration Failed" >> $COMMENT_FILE 
+               echo "" >> $COMMENT_FILE 
+               echo "**Issue:** The build process failed to complete." >> $COMMENT_FILE 
+               echo "" >> $COMMENT_FILE 
+               echo "**How to fix:**" >> $COMMENT_FILE 
+               echo "1. Run \`npm run build\` locally" >> $COMMENT_FILE 
+               echo "2. Fix any TypeScript compilation errors" >> $COMMENT_FILE 
+               echo "3. Ensure all dependencies are installed" >> $COMMENT_FILE 
+               echo "4. Test changes before pushing" >> $COMMENT_FILE 
+               echo "" >> $COMMENT_FILE 
+             fi 
+  
+             if [ "$LINT_STATUS" == "failure" ]; then 
+               echo "### 🔴 Code Linting Failed" >> $COMMENT_FILE 
+               echo "" >> $COMMENT_FILE 
+               echo "**Issue:** Code formatting or style checks failed." >> $COMMENT_FILE 
+               echo "" >> $COMMENT_FILE 
+               echo "**How to fix:**" >> $COMMENT_FILE 
+               echo "1. Run \`npm run lint\` or \`npm run format\` locally" >> $COMMENT_FILE 
+               echo "2. Fix all reported linting errors" >> $COMMENT_FILE 
+               echo "3. Test changes before pushing" >> $COMMENT_FILE 
+               echo "" >> $COMMENT_FILE 
+             fi 
+          
           echo "comment-body<<EOF" >> $GITHUB_OUTPUT
           cat $COMMENT_FILE >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
