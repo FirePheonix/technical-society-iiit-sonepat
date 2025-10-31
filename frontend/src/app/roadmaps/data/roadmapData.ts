@@ -16,7 +16,7 @@ const createNode = (
   draggable: true,
 });
 
-const createEdge = (id: string, source: string, target: string, style?: any) => ({
+const createEdge = (id: string, source: string, target: string, style?: { strokeWidth?: number; stroke?: string }) => ({
   id,
   source,
   target,

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { RoadmapTab } from '../types';
 
 interface RoadmapSidebarProps {
@@ -16,8 +15,7 @@ export function RoadmapSidebar({
   isMobileMenuOpen = false,
   setIsMobileMenuOpen 
 }: RoadmapSidebarProps) {
-  // Removed isExpanded state since sidebar is always open now
-  const [isDarkMode, setIsDarkMode] = useState(true); 
+  // Removed isExpanded state since sidebar is always open now 
   const getTabGradient = (tabId: string) => {
     switch (tabId) {
       case 'ai': return 'from-purple-500 to-pink-500';

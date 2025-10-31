@@ -47,16 +47,6 @@ export function CustomNode({ data, selected }: CustomNodeProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [particles, setParticles] = useState<Array<{id: number, x: number, y: number}>>([]);
 
-  // Guard clause for undefined data with better error handling
-  if (!data) {
-    console.warn('CustomNode received undefined data, rendering fallback node');
-    return (
-      <div className="rounded-xl bg-red-500/20 border border-red-500/50 p-2 text-center">
-        <div className="text-red-400 text-xs">Error: Missing node data</div>
-      </div>
-    );
-  }
-
   // Use theme-based colors with fallbacks
   const backgroundColor = data?.color || 'bg-primary';
   const borderColor = data?.borderColor || 'border-primary';
@@ -97,6 +87,16 @@ export function CustomNode({ data, selected }: CustomNodeProps) {
       setParticles([]);
     }
   }, [isHovered]);
+
+  // Guard clause for undefined data with better error handling
+  if (!data) {
+    console.warn('CustomNode received undefined data, rendering fallback node');
+    return (
+      <div className="rounded-xl bg-red-500/20 border border-red-500/50 p-2 text-center">
+        <div className="text-red-400 text-xs">Error: Missing node data</div>
+      </div>
+    );
+  }
 
   return (
     <div 
