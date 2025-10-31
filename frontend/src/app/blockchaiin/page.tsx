@@ -1,16 +1,17 @@
 // src/app/blockchaiin/page.tsx
 "use client";
 
-// 1. Import your new theme file
 import "./theme.css";
+import dynamic from "next/dynamic";
 
-import Hero from "@/sections/blockchain/Hero";
-import Narrative from "@/sections/blockchain/Narrative";
+// Dynamically import components that may access window/document at import or mount
+const Hero = dynamic(() => import("@/sections/blockchain/Hero"), { ssr: false });
+const Narrative = dynamic(() => import("@/sections/blockchain/Narrative"), { ssr: false });
+// Footer usually safe; if it also touches window, switch it to dynamic too
 import Footer from "@/sections/blockchain/Footer";
 
 export default function BlockchaiinPage() {
   return (
-    // 2. Wrap everything in the .blockchain-theme class
     <main className="blockchain-theme">
       <Hero />
       <Narrative />
