@@ -109,7 +109,7 @@ export default function Hero() {
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Experience unprecedented speed, security, and scalability with our
             cutting-edge blockchain protocol. Join thousands of developers
-            building tomorrow's infrastructure today.
+            building tomorrows infrastructure today.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
