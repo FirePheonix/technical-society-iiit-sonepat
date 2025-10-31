@@ -14,6 +14,8 @@ import {
     ReactFlowProvider,
 } from '@xyflow/react';
 import { CustomNode } from './CustomNode';
+import { ParticleBackground } from './ParticleBackground';
+import '@xyflow/react/dist/style.css';
 
 interface RoadmapFlowProps {
     nodes: Node[];
@@ -55,11 +57,13 @@ function RoadmapFlowInner({
     }, [fitView, onResetView]);
 
     return (
-        <div className="h-full flex-1" style={{ 
+        <div className="h-full flex-1 relative" style={{ 
             height: 'calc(100vh - 60px)', 
             width: '100%',
             minHeight: '400px'
         }}>
+            <div className="absolute inset-0 bg-black z-0"></div>
+            <ParticleBackground />
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
@@ -73,20 +77,61 @@ function RoadmapFlowInner({
                 nodesConnectable={true}
                 elementsSelectable={true}
                 attributionPosition="bottom-left"
-                className="bg-white"
+                className="bg-black"
                 style={{
-                    backgroundColor: '#ffffff',
+                    backgroundColor: '#000000', // Pure black background
                     width: '100%',
                     height: '100%'
                 }}
+                connectionLineStyle={{
+                    stroke: '#6366f1',
+                    strokeWidth: 4,
+                    strokeDasharray: '5,5'
+                }}
+                defaultEdgeOptions={{
+                    style: { 
+                        strokeWidth: 5,
+                        stroke: '#6366f1'
+                    },
+                    markerEnd: {
+                        type: 'arrowclosed',
+                        color: '#6366f1'
+                    }
+                }}
             >
-                <Controls className="bg-white shadow-lg rounded-lg !left-2 !bottom-2 lg:!left-4 lg:!bottom-4" />
-                <MiniMap
-                    className="bg-white shadow-lg rounded-lg border border-gray-200 !right-2 !top-2 lg:!right-4 lg:!top-4 !w-32 !h-24 lg:!w-40 lg:!h-32"
-                    nodeColor="#3b82f6"
-                    maskColor="rgba(0, 0, 0, 0.1)"
+                <Controls className="bg-black/80 backdrop-blur-lg shadow-lg rounded-lg !left-2 !bottom-2 lg:!left-4 lg:!bottom-4 border border-border" 
+                  style={{
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)'
+                  }}
                 />
-                <Background gap={20} size={1} color="#e5e7eb" />
+                <MiniMap
+                    className="backdrop-blur-lg shadow-lg rounded-lg border border-gray-300 !right-2 !top-2 lg:!right-4 lg:!top-4 !w-32 !h-24 lg:!w-40 lg:!h-32"
+                    nodeColor={(node) => {
+                        // Get color from node data or use default
+                        if (!node || !node.data) {
+                            console.warn('MiniMap node missing data:', node);
+                            return '#22c55e';
+                        }
+                        const nodeData = node.data as { color?: string };
+                        return nodeData.color || '#22c55e';
+                    }}
+                    maskColor="rgba(255, 255, 255, 0.1)"
+                    pannable={true}
+                    zoomable={true}
+                    style={{
+                      backgroundColor: 'rgba(240, 240, 240, 0.95)',
+                      backdropFilter: 'blur(10px)',
+                      border: '2px solid rgba(200, 200, 200, 0.8)'
+                    }}
+                />
+                <Background 
+                    gap={20} 
+                    size={1} 
+                    color="#333333" // Grid color for better visibility on black
+                    className="bg-black"
+                />
             </ReactFlow>
         </div>
     );

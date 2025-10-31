@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useNodesState, useEdgesState } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-import { RoadmapSidebar, RoadmapHeader, RoadmapFlow, FloatingActionButton, ParticleBackground } from './components';
+import { RoadmapSidebar, RoadmapHeader, RoadmapFlow, FloatingActionButton } from './components';
 import { initialRoadmapData } from './data/roadmapData';
 import { ROADMAP_TABS } from './constants';
 import { RoadmapCollection } from './types';
@@ -45,8 +45,6 @@ export default function RoadmapsPage() {
     }
   };
 
-
-
   const handleFullscreen = () => {
     try {
       if (!document.fullscreenElement) {
@@ -62,9 +60,9 @@ export default function RoadmapsPage() {
   const currentTab = ROADMAP_TABS.find(tab => tab.id === activeTab);
 
   return (
-    <div className="roadmaps-page h-screen w-full bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900 flex flex-col lg:flex-row relative overflow-hidden">
-      <ParticleBackground />
-
+    <div className="roadmaps-page h-screen w-full flex flex-col lg:flex-row relative overflow-hidden bg-black">
+      <div className="absolute inset-0 bg-black pointer-events-none"></div>
+      
       <RoadmapSidebar
         tabs={ROADMAP_TABS}
         activeTab={activeTab}
@@ -73,7 +71,7 @@ export default function RoadmapsPage() {
         setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
 
-      <div className="flex-1 flex flex-col relative z-10">
+      <div className="flex-1 flex flex-col relative z-10 bg-black">
         <RoadmapHeader
           currentTab={currentTab}
           onMobileMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -94,7 +92,7 @@ export default function RoadmapsPage() {
       />
 
       <div className="fixed top-4 right-4 z-50 pointer-events-none">
-        <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-lg shadow-lg transform translate-x-full opacity-0 transition-all duration-500 achievement-notification">
+        <div className="bg-gradient-to-r from-primary to-green-500 text-primary-foreground px-4 py-2 rounded-lg shadow-lg transform translate-x-full opacity-0 transition-all duration-500 achievement-notification">
           <div className="flex items-center space-x-2">
             <span className="text-lg">🏆</span>
             <span className="font-medium">Achievement Unlocked!</span>
