@@ -1,4 +1,4 @@
-import { RoadmapTab } from '../types';
+import { RoadmapTab } from '@/lib/roadmaps/types';
 
 interface RoadmapHeaderProps {
   currentTab: RoadmapTab | undefined;

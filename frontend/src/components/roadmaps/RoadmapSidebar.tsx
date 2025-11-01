@@ -1,4 +1,4 @@
-import { RoadmapTab } from '../types';
+import { RoadmapTab } from '@/lib/roadmaps/types';
 
 interface RoadmapSidebarProps {
   tabs: RoadmapTab[];
@@ -48,23 +48,32 @@ export function RoadmapSidebar({
           lg:translate-x-0 lg:static lg:inset-0
         `}
       >
-        <div className="px-4 py-6 border-b border-border flex items-center justify-between">
+        <div className="px-4 py-6 border-b border-border/50 flex items-center justify-between bg-gradient-to-r from-black via-gray-900 to-black">
           <div className="flex items-center space-x-3">
-            <div className={`
-              transition-all duration-500 ease-out overflow-hidden
-            `}>
-              <h1 className={`text-xl font-bold whitespace-nowrap bg-clip-text bg-gradient-to-r from-black to-white`}>
+            <div className="relative">
+              {/* Icon/Logo area */}
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                </svg>
+              </div>
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 opacity-50 blur-md -z-10"></div>
+            </div>
+            
+            <div>
+              <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 drop-shadow-lg">
                 Roadmaps
               </h1>
-              <p className={`text-xs text-muted-foreground/80 whitespace-nowrap`}>
-                Interactive paths
+              <p className="text-xs text-emerald-400/70 font-medium tracking-wide">
+                Interactive Learning Paths
               </p>
             </div>
           </div>
           
           <button
             onClick={() => setIsMobileMenuOpen?.(false)}
-            className="lg:hidden p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50"
+            className="lg:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-200"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

@@ -4,14 +4,13 @@ import { useState, useEffect } from 'react';
 import { useNodesState, useEdgesState } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-import { RoadmapSidebar, RoadmapHeader, RoadmapFlow, FloatingActionButton } from './components';
-import { initialRoadmapData } from './data/roadmapData';
-import { ROADMAP_TABS } from './constants';
-import { RoadmapCollection } from './types';
+import { RoadmapSidebar, RoadmapHeader, RoadmapFlow, FloatingActionButton } from '@/components/roadmaps';
+import { initialRoadmapData, ROADMAP_TABS, RoadmapCollection } from '@/lib/roadmaps';
 
 export default function RoadmapsPage() {
   const [activeTab, setActiveTab] = useState('ai');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPanLocked, setIsPanLocked] = useState(false);
 
 
   const initialData = initialRoadmapData.ai;
@@ -57,6 +56,10 @@ export default function RoadmapsPage() {
     }
   };
 
+  const handleToggleLock = () => {
+    setIsPanLocked(!isPanLocked);
+  };
+
   const currentTab = ROADMAP_TABS.find(tab => tab.id === activeTab);
 
   return (
@@ -83,12 +86,15 @@ export default function RoadmapsPage() {
           onEdgesChange={onEdgesChange}
           onEdgesSet={setEdges}
           onResetView={handleReset}
+          isPanLocked={isPanLocked}
         />
       </div>
 
       <FloatingActionButton
         onReset={handleReset}
         onFullscreen={handleFullscreen}
+        onToggleLock={handleToggleLock}
+        isLocked={isPanLocked}
       />
 
       <div className="fixed top-4 right-4 z-50 pointer-events-none">

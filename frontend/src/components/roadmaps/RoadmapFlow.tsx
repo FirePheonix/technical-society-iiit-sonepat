@@ -24,6 +24,7 @@ interface RoadmapFlowProps {
     onEdgesChange: (changes: EdgeChange[]) => void;
     onEdgesSet: (callback: (edges: Edge[]) => Edge[]) => void;
     onResetView?: () => void;
+    isPanLocked?: boolean;
 }
 
 const nodeTypes = {
@@ -36,7 +37,8 @@ function RoadmapFlowInner({
     onNodesChange,
     onEdgesChange,
     onEdgesSet,
-    onResetView
+    onResetView,
+    isPanLocked = false
 }: RoadmapFlowProps) {
     const { fitView } = useReactFlow();
     
@@ -76,6 +78,8 @@ function RoadmapFlowInner({
                 nodesDraggable={true}
                 nodesConnectable={true}
                 elementsSelectable={true}
+                panOnDrag={!isPanLocked}
+                zoomOnScroll={!isPanLocked}
                 attributionPosition="bottom-left"
                 className="bg-black"
                 style={{
@@ -84,19 +88,22 @@ function RoadmapFlowInner({
                     height: '100%'
                 }}
                 connectionLineStyle={{
-                    stroke: '#6366f1',
-                    strokeWidth: 4,
-                    strokeDasharray: '5,5'
+                    stroke: '#8b5cf6',
+                    strokeWidth: 3,
+                    strokeLinecap: 'round'
                 }}
                 defaultEdgeOptions={{
+                    type: 'default',
                     style: { 
-                        strokeWidth: 5,
-                        stroke: '#6366f1'
+                        strokeWidth: 3,
+                        stroke: '#8b5cf6'
                     },
                     markerEnd: {
                         type: 'arrowclosed',
-                        color: '#6366f1'
-                    }
+                        width: 30,
+                        height: 30
+                    },
+                    animated: true
                 }}
             >
                 <Controls className="bg-black/80 backdrop-blur-lg shadow-lg rounded-lg !left-2 !bottom-2 lg:!left-4 lg:!bottom-4 border border-border" 
@@ -107,11 +114,9 @@ function RoadmapFlowInner({
                   }}
                 />
                 <MiniMap
-                    className="backdrop-blur-lg shadow-lg rounded-lg border border-gray-300 !right-2 !top-2 lg:!right-4 lg:!top-4 !w-32 !h-24 lg:!w-40 lg:!h-32"
+                    className="hidden lg:block backdrop-blur-lg shadow-lg rounded-lg border border-gray-300 !right-4 !top-4 !w-40 !h-32"
                     nodeColor={(node) => {
-                        // Get color from node data or use default
                         if (!node || !node.data) {
-                            console.warn('MiniMap node missing data:', node);
                             return '#22c55e';
                         }
                         const nodeData = node.data as { color?: string };
@@ -127,9 +132,9 @@ function RoadmapFlowInner({
                     }}
                 />
                 <Background 
-                    gap={20} 
-                    size={1} 
-                    color="#333333" // Grid color for better visibility on black
+                    gap={16} 
+                    size={2} 
+                    color="#1a1a2e" // Darker grid for better contrast
                     className="bg-black"
                 />
             </ReactFlow>
