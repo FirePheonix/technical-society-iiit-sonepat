@@ -101,7 +101,7 @@ export default function Narrative() {
     
     const ctx = gsap.context(() => {
       // --- CHANGE 2: Remove the entire "Vigorous expansion" gsap.timeline ---
-      // (It conflicts with the Hero.tsx logic)
+      // (It conflicts with the HeroCanvas.tsx logic)
 
       // Triggers for each section's camera
       sections.forEach((section, index) => {

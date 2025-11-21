@@ -199,6 +199,15 @@ const Navigation = () => {
             </Button>
             {/* --- END OF MODIFIED BUTTON --- */}
 
+              <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-all duration-300 bg-transparent hover:bg-white/5 border-white/20"
+              >
+                  <Link href="/webdev">Web Dev</Link>
+              </Button>
+
             <Button 
               onClick={() => window.open('/roadmaps', '_blank')}
               size="sm"
@@ -282,6 +291,15 @@ const Navigation = () => {
                     <Link href="/blockchain">Blockchain</Link>
                   </Button>
                   {/* --- END OF MODIFIED BUTTON --- */}
+
+                    <Button
+                        asChild
+                        variant="outline"
+                        className="mt-4 text-muted-foreground hover:text-foreground bg-transparent hover:bg-white/5 border-white/20"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                        <Link href="/webdev">Web Dev</Link>
+                    </Button>
 
                   <Button 
                     onClick={() => {
